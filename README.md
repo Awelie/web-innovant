@@ -4,7 +4,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Init the project
 
-To start with the project, you need [https://nodejs.org/en/](nodejs), after this, download all node modules with :
+To start with the project, you need [nodejs](https://nodejs.org/en/), after this, download all node modules with :
 
 ### `npm install`
 
