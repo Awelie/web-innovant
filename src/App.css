@@ -37,6 +37,7 @@ nav {
   /* justify-content: center; */
   align-items: center;
   max-height: calc(100vh - 3em);
+  min-height: calc(100vh - 3em);
   overflow-y: auto;
 }
 .fitness-app-container {
@@ -45,6 +46,7 @@ nav {
   align-items: center;
   width: 100%;
   overflow-y: auto;
+  flex-grow: 1;
 }
 .timeNavigator {
   width: 100%;

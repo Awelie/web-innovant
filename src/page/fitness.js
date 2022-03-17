@@ -55,16 +55,30 @@ export class Fitness extends React.Component {
 			{
 				this.state.loaded ? (
 					<>
-						<GlobalData icon={mdiBrain} value={0} title={30} goal={100}/>
+						<GlobalData icon={mdiBrain} title={this.state.data[this.state.selected].globalscore} goal={100}/>
 						<TimeNavigator date={this.state.data[this.state.selected].date} before={this.state.selected < this.state.data.length-1} after={this.state.selected > 0} changeState={this.setStateSelected}/>
 						<div className="fitness-app-container">
-							<DisplayData key={'stepsnumber'} title={"Nombre de pas"} goal={"8000 pas"} value={this.state.data[this.state.selected].stepsnumber} percentage={this.state.data[this.state.selected].stepsnumber/8000*100} dark={true} icon={mdiWalk}/>
-							<DisplayData key={'sleeptime'} title={"Sommeil"} goal={"480mins (8h)"} value={this.state.data[this.state.selected].sleeptime} percentage={this.state.data[this.state.selected].sleeptime/480*100} dark={true} icon={mdiSleep}/>
-							<DisplayData key={'volume'} title={"Volume ambiant"} goal={"Environnement calme 80db max"} value={this.state.data[this.state.selected].ambiantvolume} percentage={this.state.data[this.state.selected].ambiantvolume/60} dark={true} icon={mdiVolumeSource}/>
-							<DisplayData key={'volume'} title={"Volume ambiant"} goal={"Environnement calme 80db max"} value={this.state.data[this.state.selected].ambiantvolume} percentage={this.state.data[this.state.selected].ambiantvolume/60} dark={true} icon={mdiVolumeSource}/>
-							<DisplayData key={'volume'} title={"Volume ambiant"} goal={"Environnement calme 80db max"} value={this.state.data[this.state.selected].ambiantvolume} percentage={this.state.data[this.state.selected].ambiantvolume/60} dark={true} icon={mdiVolumeSource}/>
-							<DisplayData key={'volume'} title={"Volume ambiant"} goal={"Environnement calme 80db max"} value={this.state.data[this.state.selected].ambiantvolume} percentage={this.state.data[this.state.selected].ambiantvolume/60} dark={true} icon={mdiVolumeSource}/>
-							<DisplayData key={'volume'} title={"Volume ambiant"} goal={"Environnement calme 80db max"} value={this.state.data[this.state.selected].ambiantvolume} percentage={this.state.data[this.state.selected].ambiantvolume/60} dark={true} icon={mdiVolumeSource}/>
+							<DisplayData 
+								key={'stepsnumber'} 
+								title={"Nombre de pas"} 
+								goal={"8000 pas"} 
+								value={this.state.data[this.state.selected].stepsnumber} 
+								percentage={this.state.data[this.state.selected].stepsnumber/8000*100} 
+								icon={mdiWalk}/>
+							<DisplayData 
+								key={'sleeptime'} 
+								title={"Sommeil"} 
+								goal={"480mins (8h)"} 
+								value={this.state.data[this.state.selected].sleeptime} 
+								percentage={this.state.data[this.state.selected].sleeptime/480*100} 
+								icon={mdiSleep}/>
+							<DisplayData 
+								key={'volume'} 
+								title={"Volume ambiant"} 
+								goal={"Environnement calme 80db max"} 
+								value={this.state.data[this.state.selected].ambiantvolume} 
+								percentage={this.state.data[this.state.selected].ambiantvolume/60} 
+								icon={mdiVolumeSource}/>
 						</div>
 					</>
 				) : (<div>En cours de chargement</div>)

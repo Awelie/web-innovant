@@ -1,23 +1,15 @@
 import React from "react";
+import { Navbar } from '../components/navbar'
 
 export class About extends React.Component {
-    constructor(props) {
-        super(props);
-		this.state = {
-			data: {},
-			user: {},
-			selected: null,
-			loaded: false,
-		};
-		//this.getData();
-		this.getData.bind(this)
-    }
- 
     render() {
         return (
-            <div className="fitness-app">
-			lol
-            </div>
+            <>
+                <div className="fitness-app">
+			        lol
+                </div>
+                <Navbar />
+            </>
         )
     }
 }

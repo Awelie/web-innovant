@@ -14,7 +14,7 @@ export class DisplayData extends React.Component {
                         <div className="goal">{value} - {goal}</div>
                     </div>
                 </div>
-                <CircularProgressWithLabel value={percentage} />
+                <CircularProgressWithLabel value={percentage < 100 ? percentage : 100} />
             </div>
         )
     }
