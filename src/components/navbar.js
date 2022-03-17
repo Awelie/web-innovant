@@ -12,8 +12,8 @@ export class Navbar extends React.Component {
     render() {
         return (
             <nav>
-                <Link to="/"><Icon path={mdiHome} size={1} color='var(--primary)'/></Link>
-                <Link to="/about"><Icon path={mdiAccount} size={1} color='var(--primary)'/></Link>
+                <Link to="/"><Icon path={mdiHome} size={1.5} color='var(--primary)'/></Link>
+                <Link to="/about"><Icon path={mdiAccount} size={1.5} color='var(--primary)'/></Link>
             </nav>
         )
     }
