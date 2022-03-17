@@ -1,38 +1,73 @@
-.App {
-  text-align: center;
+:root {
+  --dark-bg: #444444;
+  --dark-bg-dark-shadow: #363636;
+  --dark-bg-light-shadow: #525252;
+  --g-text-color-dark: rgba(255, 255, 255, 0.93);
+  --box-shadow: 9px 9px 18px var(--dark-bg-dark-shadow),
+  -9px -9px 18px var(--dark-bg-light-shadow);
+  --primary: white;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+body {
+  background: var(--dark-bg);
+  width: 100%;
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.fitness-app {
+  min-width: 100%;
   display: flex;
   flex-direction: column;
+  /* justify-content: center; */
   align-items: center;
+}
+.timeNavigator {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  color: var(--g-text-color-dark);
+  padding-bottom: 10px;
+}
+.globalData {
+  min-width: 128px;
+  min-height: 128px;
+  box-shadow: var(--box-shadow);
+  background: var(--dark-bg);
+  border-radius: 150px;
+  margin: 20px;
+  display: flex;
+  flex-direction: column;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items: center;
+  color: var(--g-text-color-dark);
+}
+.displayData {
+  display: flex;
+  padding: 1em;
+  margin: .7em .6em;
+  align-items: center;
+  width: 90%;
+  justify-content: space-between;
+  border-radius: .5em;
+  background: var(--dark-bg);
+  color: var(--g-text-color-dark);
+  box-shadow: var(--box-shadow);
 }
 
-.App-link {
-  color: #61dafb;
+.displayData .infos {
+  flex-grow: 1;
+  padding: 0 1em;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.displayData .infos .title {
+  font-size: 0.9em;
+  font-weight: 500;
+}
+
+.displayData .infos .goal {
+  font-size: .8em;
 }
