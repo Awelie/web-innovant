@@ -17,6 +17,11 @@ body {
   background: var(--dark-bg);
   width: 100%;
 }
+nav {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
 .fitness-app {
   min-width: 100%;
   display: flex;
