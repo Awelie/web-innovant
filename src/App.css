@@ -3,9 +3,15 @@
   --dark-bg-dark-shadow: #363636;
   --dark-bg-light-shadow: #525252;
   --g-text-color-dark: rgba(255, 255, 255, 0.93);
-  --box-shadow: 9px 9px 18px var(--dark-bg-dark-shadow),
-  -9px -9px 18px var(--dark-bg-light-shadow);
+  /* --box-shadow: 9px 9px 18px var(--dark-bg-dark-shadow), */
+  /* -9px -9px 18px var(--dark-bg-light-shadow); */
   --primary: white;
+}
+
+:root {
+  --body-bg: linear-gradient(180deg, #2A2D32 0%, #131313 99.17%);
+  --dark-bg: #27282A;
+  --box-shadow: 9px 9px 10px rgba(0, 0, 0, 0.25), -9px -9px 10px rgba(255, 255, 255, 0.04), inset 1px 1px 2px rgba(0, 0, 0, 0.02);
 }
 
 * {
@@ -15,10 +21,13 @@
 }
 body {
   background: var(--dark-bg);
+  background: var(--body-bg);
   width: 100%;
+  height: -webkit-fill-available;
 }
 .App {
   min-height: 100vh;
+  max-height: 100vh;
   display: flex;
   flex-direction: column;
 }
@@ -28,7 +37,8 @@ nav {
   align-items: center;
   width: 100%;
   max-height: 3em;
-  /* min-height: 3em; */
+  padding: 10px 0;
+  background: rgba(0, 0, 0, 0.44);
 }
 .fitness-app {
   min-width: 100%;
@@ -36,16 +46,23 @@ nav {
   flex-direction: column;
   /* justify-content: center; */
   align-items: center;
-  max-height: calc(100vh - 3em);
-  min-height: calc(100vh - 3em);
+  min-height: 100vh;
   overflow-y: auto;
 }
+@supports (-webkit-touch-callout: none) {
+  .fitness-app, .App {
+    min-height: -webkit-fill-available;
+    max-height: -webkit-fill-available;
+  }
+}
 .fitness-app-container {
+  padding: 16px 0;
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 100%;
   overflow-y: auto;
+  flex: 1;
   flex-grow: 1;
 }
 .timeNavigator {
@@ -94,4 +111,5 @@ nav {
 
 .displayData .infos .goal {
   font-size: .8em;
+  color: rgba(255, 255, 255, 0.603)
 }

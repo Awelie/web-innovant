@@ -83,8 +83,8 @@ export class Fitness extends React.Component {
 					</>
 				) : (<div>En cours de chargement</div>)
 			}
-            </div>
 			<Navbar />
+            </div>
 		</>
         )
     }
