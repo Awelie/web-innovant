@@ -5,8 +5,12 @@ export class About extends React.Component {
     render() {
         return (
             <>
-                <div className="fitness-app">
-			        lol
+                <div className="fitness-app-container"
+                style={{
+                    color: "white"
+                }}
+                >
+			        A propos mdr
                 </div>
                 <Navbar />
             </>

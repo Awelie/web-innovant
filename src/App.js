@@ -1,4 +1,4 @@
-import './App.css';
+import './App.min.css';
 import { Fitness } from './page/fitness'
 import { About } from './page/about'
 import { Routes, Route } from "react-router-dom";

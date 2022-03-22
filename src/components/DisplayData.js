@@ -4,9 +4,9 @@ import { CircularProgressWithLabel } from './atom/CircularProgressWithLabel'
 
 export class DisplayData extends React.Component {
     render() {
-        const { icon, value, percentage, title, goal } = this.props
+        const { icon, value, percentage, title, goal, loaded } = this.props
         return (
-            <div className="displayData">
+            <div className={loaded ? "displayData" : "displayData is-loading"}>
                 <Icon path={icon} size={1} color='var(--primary)' />
                 <div className="infos">
                     <div className="text">
