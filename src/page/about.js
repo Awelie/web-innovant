@@ -1,16 +1,16 @@
 import React from "react";
 import { Navbar } from '../components/navbar'
-
+import { Link } from 'react-router-dom'
 export class About extends React.Component {
     render() {
         return (
             <>
-                <div className="fitness-app-container"
+                <div className="container"
                 style={{
                     color: "white"
                 }}
                 >
-			        A propos mdr
+			        <Link to="/logout">Déconnection</Link>
                 </div>
                 <Navbar />
             </>

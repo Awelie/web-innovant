@@ -36,7 +36,7 @@ export class Fitness extends React.Component {
 	  	let { data: health_data, error: error_health } = await supabase
 			.from('health_data')
 			.select("*")
-			.eq('id', '1')
+			.eq('id', supabase.auth.user().id)
 		health_data.sort((a, b) => (new Date(b.date)) - (new Date(a.date)))
 		//setTimeout(() => { 
 			this.setState({
@@ -55,7 +55,7 @@ export class Fitness extends React.Component {
 		<>
             <div className="fitness-app">
 			{
-				this.state.loaded ? (
+				(this.state.loaded && this.state.data.length > 0) ? (
 					<>
 						<GlobalData icon={mdiBrain} title={this.state.data[this.state.selected].globalscore} goal={100}/>
 						<TimeNavigator date={this.state.data[this.state.selected].date} before={this.state.selected < this.state.data.length-1} after={this.state.selected > 0} changeState={this.setStateSelected}/>
