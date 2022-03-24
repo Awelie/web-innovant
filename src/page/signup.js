@@ -2,15 +2,15 @@ import React, { useState } from "react"
 import { supabase } from '../components/supabaseClient'
 import { Navigate, Link } from "react-router-dom";
 
-export function Login() {
+export function Signup() {
     let [auth, setAuth] = useState(supabase.auth.user())
     if (auth) {
-      return <Navigate to="/"/>;
+      return <Navigate to="/login"/>;
     }
-    return <LoginView state={setAuth}/>
+    return <SignupView state={setAuth}/>
 }
 
-class LoginView extends React.Component {
+class SignupView extends React.Component {
     constructor(props) {
         super(props);
         this.state = {setAuth: props.state, username: '', password: ''};
@@ -19,30 +19,23 @@ class LoginView extends React.Component {
         this.checkLogin = this.checkLogin.bind(this);
         this.signup = this.signup.bind(this);
     }
-    async checkLogin() {
-        // eslint-disable-next-line no-unused-vars
-        let { user, error } = await supabase.auth.signIn({
-            email: this.state.username,
-            password: this.state.password
-        })
-        if(!error)
-            this.state.setAuth(supabase.auth.user())
-    }
     async signup() {
         // eslint-disable-next-line no-unused-vars
         let { user, error } = await supabase.auth.signUp({
             email: this.state.username,
             password: this.state.password
         })
+        if(!error)
+            this.state.setAuth(supabase.auth.user())
     }
     handleSubmit(event) {
         event.preventDefault();
-        this.checkLogin();
+        this.signup();
     }
     render() {
         return (
             <>
-            <div>Connexion</div>
+            <div>Inscription</div>
             <form className="container login" style={{
                 color: "white",
                 justifyContent: "center",
@@ -53,7 +46,7 @@ class LoginView extends React.Component {
                 <input type="password" value={this.state.password} onChange={(ev) => {this.setState({password: ev.target.value})}}/>
                 <input type="submit"/>
             </form>
-            <Link to="/signup">S'inscrire</Link>
+            <Link to="/login">Se connecter</Link>
             </>
         )
     }

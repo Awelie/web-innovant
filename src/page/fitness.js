@@ -28,6 +28,25 @@ export class Fitness extends React.Component {
 		this.getData()
 	}
     async getData() {
+		let { data: today, error: error_today } = await supabase
+			.from('health_data')
+			.select('*')
+			.eq('id', supabase.auth.user().id)
+			.eq('date', ((new Date()).toISOString()).toLocaleString('zh-TW'))
+		if(today.length === 0) {
+			const { data, error } = await supabase
+  				.from('health_data')
+  				.insert([
+    				{
+						id: supabase.auth.user().id,
+						date: ((new Date()).toISOString()).toLocaleString('zh-TW'),
+						sleeptime: Math.floor(Math.random()* 480),
+						stepsnumber: Math.floor(Math.random()* 12000),
+						ambiantvolume: Math.floor(Math.random()* 100),
+						globalscore: Math.floor(Math.random()* 100)
+					},
+  				])
+		}
 		// eslint-disable-next-line no-unused-vars
 		let { data: users, error: error_users } = await supabase
 			.from('users')
@@ -91,32 +110,32 @@ export class Fitness extends React.Component {
 				<>
 				<GlobalData icon={mdiBrain} title={""} goal={100}/>
 				<TimeNavigator date={null} before={false} after={false} changeState={this.setStateSelected}/>
-			<div className="fitness-app-container">
-				<DisplayData 
-					loaded={this.state.loaded}
-					key={'stepsnumber'} 
-					title={"Nombre de pas"} 
-					goal={"8000 pas"} 
-					value={""} 
-					percentage={0} 
-					icon={mdiWalk}/>
-				<DisplayData
-					loaded={this.state.loaded}
-					key={'sleeptime'} 
-					title={"Temps de sommeil"} 
-					goal={"480mins (8h)"} 
-					value={""} 
-					percentage={0} 
-					icon={mdiSleep}/>
-				<DisplayData 
-					loaded={this.state.loaded}
-					key={'volume'} 
-					title={"Volume ambiant moyen"} 
-					goal={"Environnement calme : moyenne 82.5dB"} 
-					value={""} 
-					percentage={0} 
-					icon={mdiVolumeSource}/>
-			</div>
+				<div className="fitness-app-container">
+					<DisplayData 
+						loaded={this.state.loaded}
+						key={'stepsnumber'} 
+						title={"Nombre de pas"} 
+						goal={"8000 pas"} 
+						value={""} 
+						percentage={0} 
+						icon={mdiWalk}/>
+					<DisplayData
+						loaded={this.state.loaded}
+						key={'sleeptime'} 
+						title={"Temps de sommeil"} 
+						goal={"480mins (8h)"} 
+						value={""} 
+						percentage={0} 
+						icon={mdiSleep}/>
+					<DisplayData 
+						loaded={this.state.loaded}
+						key={'volume'} 
+						title={"Volume ambiant moyen"} 
+						goal={"Environnement calme : moyenne 82.5dB"} 
+						value={""} 
+						percentage={0} 
+						icon={mdiVolumeSource}/>
+				</div>
 				</>
 				)
 			}
