@@ -32,6 +32,11 @@ body {
 }
 
 .fitness-app {
+    cursor: default;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
     height: 100vh;  
     max-height: -webkit-fill-available;
     -webkit-flex-direction: column;
@@ -141,6 +146,10 @@ body {
     background-size: 200% 100%;
     animation: loading 2s linear infinite;
     width: 100%;
+}
+
+.clickable {
+    cursor: pointer
 }
 
 @keyframes loading {

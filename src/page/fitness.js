@@ -2,9 +2,9 @@ import React from "react";
 import { DisplayData } from '../components/DisplayData'
 import { GlobalData } from '../components/GlobalData'
 import { TimeNavigator } from '../components/TimeNavigator'
-import { supabase } from '../components/supabaseClient'
 import { Navbar } from '../components/navbar'
 import { CircularProgressWithLabel } from '../components/atom/CircularProgressWithLabel'
+import { LoadData } from '../components/LoadData'
 
 import {
 	mdiSleep,
@@ -21,10 +21,9 @@ export class Fitness extends React.Component {
 			selected: parseInt(this.props.id),
 			loaded: false,
 		};
-		this.getData.bind(this)
     }
 	componentDidMount() {
-		this.getData()
+		LoadData().then(data => this.setState(data))
 	}
 	getIcon(score) {
 		if(score < 20)
@@ -41,46 +40,7 @@ export class Fitness extends React.Component {
 					else
 						return "/assets/img/5.png"
 	}
-    async getData() {
-		// eslint-disable-next-line no-unused-vars
-		let { data: today, error: error_today } = await supabase
-			.from('health_data')
-			.select('*')
-			.eq('id', supabase.auth.user().id)
-			.eq('date', ((new Date()).toISOString()).toLocaleString('zh-TW'))
-		if(today.length === 0) {
-			// eslint-disable-next-line no-unused-vars
-			const { data, error } = await supabase
-  				.from('health_data')
-  				.insert([
-    				{
-						id: supabase.auth.user().id,
-						date: ((new Date()).toISOString()).toLocaleString('zh-TW'),
-						sleeptime: Math.floor(Math.random()* 480),
-						stepsnumber: Math.floor(Math.random()* 12000),
-						ambiantvolume: Math.floor(Math.random()* 100),
-						globalscore: Math.floor(Math.random()* 100)
-					},
-  				])
-		}
-		// eslint-disable-next-line no-unused-vars
-		let { data: users, error: error_users } = await supabase
-			.from('users')
-			.select('*')
-	  	// eslint-disable-next-line no-unused-vars
-	  	let { data: health_data, error: error_health } = await supabase
-			.from('health_data')
-			.select("*")
-			.eq('id', supabase.auth.user().id)
-		health_data.sort((a, b) => (new Date(b.date)) - (new Date(a.date)))
-		//setTimeout(() => { 
-			this.setState({
-				user: users,
-				data: health_data,
-				loaded: true,
-			}) 
-		//}, 5000)
-	}
+    
 	setStateSelected = (val) => {
 		this.setState({selected: this.state.selected + val});
 	}
