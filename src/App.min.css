@@ -23,7 +23,7 @@ body {
     background: #141414
 }
 
-.App {
+#root {
     min-height: 100vh;
     max-height: 100vh;
     -webkit-flex-direction: column;
@@ -58,11 +58,13 @@ nav {
 }
 
 @supports (-webkit-touch-callout: none) {
-
     .fitness-app,
     .App {
         min-height: -webkit-fill-available;
         max-height: -webkit-fill-available
+    }
+    nav {
+        padding: 10px 0 30px 0;
     }
 }
 
@@ -78,6 +80,18 @@ nav {
     display: -webkit-flex;
     display: flex;
     overflow-y: auto
+}
+
+.login {
+    justify-content: center;
+    color: var(--primary);
+}
+
+.loginForm {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    gap: 10px;
 }
 
 .timeNavigator {

@@ -1,10 +1,9 @@
 import React from 'react'
 import Icon from '@mdi/react'
-import { CircularProgressWithLabel } from './atom/CircularProgressWithLabel'
 
 export class DisplayData extends React.Component {
     render() {
-        const { icon, value, percentage, title, goal, loaded } = this.props
+        const { icon, value, title, goal, loaded, component } = this.props
         return (
             <div className={loaded ? "displayData" : "displayData is-loading"}>
                 <Icon path={icon} size={1} color='var(--primary)' />
@@ -14,7 +13,7 @@ export class DisplayData extends React.Component {
                         <div className="goal">{value} - {goal}</div>
                     </div>
                 </div>
-                <CircularProgressWithLabel value={percentage < 100 ? percentage : 100} />
+                {component}
             </div>
         )
     }

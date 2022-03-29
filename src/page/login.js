@@ -1,20 +1,21 @@
 import React, { useState } from "react"
 import { supabase } from '../components/supabaseClient'
 import { Navigate, Link } from "react-router-dom";
+import TextField from '@mui/material/TextField';
 
 export function Login() {
     let [auth, setAuth] = useState(supabase.auth.user())
     if (auth) {
-      return <Navigate to="/"/>;
+        return <Navigate to="/" />;
     }
-    return <LoginView state={setAuth}/>
+    return <LoginView state={setAuth} />
 }
 
 class LoginView extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {setAuth: props.state, username: '', password: ''};
-    
+        this.state = { setAuth: props.state, username: '', password: '' };
+
         this.handleSubmit = this.handleSubmit.bind(this);
         this.checkLogin = this.checkLogin.bind(this);
         this.signup = this.signup.bind(this);
@@ -25,7 +26,7 @@ class LoginView extends React.Component {
             email: this.state.username,
             password: this.state.password
         })
-        if(!error)
+        if (!error)
             this.state.setAuth(supabase.auth.user())
     }
     async signup() {
@@ -41,20 +42,22 @@ class LoginView extends React.Component {
     }
     render() {
         return (
-            <>
-            <div>Connexion</div>
-            <form className="container login" style={{
-                color: "white",
-                justifyContent: "center",
-                alignItems: "center"
-            }}
-            onSubmit={this.handleSubmit}>
-		        <input value={this.state.username} onChange={(ev) => {this.setState({username: ev.target.value})}}/>
-                <input type="password" value={this.state.password} onChange={(ev) => {this.setState({password: ev.target.value})}}/>
-                <input type="submit"/>
-            </form>
-            <Link to="/signup">S'inscrire</Link>
-            </>
+            <div className="container login">
+                <div><h2>Connexion</h2></div>
+                <form style={{width: "80%", maxWidth: "400px"}} className="loginForm" onSubmit={this.handleSubmit}>
+                    <TextField id="username" label="Nom de compte" value={this.state.username} onChange={(ev) => { this.setState({ username: ev.target.value }) }}/>
+                    <TextField id="password" type="password" label="Mot de passe" value={this.state.password} onChange={(ev) => { this.setState({ password: ev.target.value }) }}/>
+                    <TextField type="submit"/>
+                </form>
+                <hr style={{
+                    width: "70%",
+                    maxWidth: "400px",
+                    marginTop: "10px",
+                    marginBottom: "10px"
+                }}/>
+                <Link to="/signup">S'inscrire</Link>
+            </div>
+            
         )
     }
 }

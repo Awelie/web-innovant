@@ -4,6 +4,8 @@ import { GlobalData } from '../components/GlobalData'
 import { TimeNavigator } from '../components/TimeNavigator'
 import { supabase } from '../components/supabaseClient'
 import { Navbar } from '../components/navbar'
+import { CircularProgressWithLabel } from '../components/atom/CircularProgressWithLabel'
+
 
 import {
 	mdiSleep,
@@ -85,7 +87,7 @@ export class Fitness extends React.Component {
 								title={"Nombre de pas"} 
 								goal={"8000 pas"} 
 								value={this.state.data[this.state.selected].stepsnumber} 
-								percentage={this.state.data[this.state.selected].stepsnumber/8000*100} 
+								component={<CircularProgressWithLabel value={this.state.data[this.state.selected].stepsnumber/8000*100 < 100 ? this.state.data[this.state.selected].stepsnumber/8000*100 : 100} />}
 								icon={mdiWalk}/>
 							<DisplayData 
 							loaded={this.state.loaded}
@@ -93,7 +95,7 @@ export class Fitness extends React.Component {
 								title={"Temps de sommeil"} 
 								goal={"480mins (8h)"} 
 								value={this.state.data[this.state.selected].sleeptime} 
-								percentage={this.state.data[this.state.selected].sleeptime/480*100} 
+								component={<CircularProgressWithLabel value={this.state.data[this.state.selected].sleeptime/480*100 < 100 ? this.state.data[this.state.selected].sleeptime/480*100 : 100} />} 
 								icon={mdiSleep}/>
 							<DisplayData 
 							loaded={this.state.loaded}
@@ -101,7 +103,8 @@ export class Fitness extends React.Component {
 								title={"Volume ambiant moyen"} 
 								goal={"Environnement calme : moyenne 82.5dB"} 
 								value={this.state.data[this.state.selected].ambiantvolume} 
-								percentage={this.state.data[this.state.selected].ambiantvolume/82.5} 
+								
+								percentage={this.state.data[this.state.selected].ambiantvolume/82.5*100} 
 								icon={mdiVolumeSource}/>
 						</div>
 					</>
