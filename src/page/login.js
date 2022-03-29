@@ -26,6 +26,7 @@ class LoginView extends React.Component {
             email: this.state.username,
             password: this.state.password
         })
+        console.log(error)
         if (!error)
             this.state.setAuth(supabase.auth.user())
     }
@@ -45,7 +46,7 @@ class LoginView extends React.Component {
             <div className="container login">
                 <div><h2>Connexion</h2></div>
                 <form style={{width: "80%", maxWidth: "400px"}} className="loginForm" onSubmit={this.handleSubmit}>
-                    <TextField id="username" label="Nom de compte" value={this.state.username} onChange={(ev) => { this.setState({ username: ev.target.value }) }}/>
+                    <TextField id="username" label="Adresse mail" value={this.state.username} onChange={(ev) => { this.setState({ username: ev.target.value }) }}/>
                     <TextField id="password" type="password" label="Mot de passe" value={this.state.password} onChange={(ev) => { this.setState({ password: ev.target.value }) }}/>
                     <TextField type="submit"/>
                 </form>

@@ -4,8 +4,24 @@ import { BrowserRouter } from "react-router-dom";
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-//import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 
+const getMobile = () => {
+  const ua = navigator.userAgent
+  if (/android/i.test(ua)) {
+    return "Android"
+  }
+  else if (/iPad|iPhone|iPod/.test(ua) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1)){
+    return "iOS"
+  }
+  return "Other"
+}
+
+console.log(getMobile())
+  if(getMobile() === "iOS") {
+    document.documentElement.style.setProperty('--nav-margin', "25px");
+  } else {
+    document.documentElement.style.setProperty('--nav-margin', "0");
+  }
 ReactDOM.render(
   <BrowserRouter>
     <App />
@@ -13,16 +29,4 @@ ReactDOM.render(
   document.getElementById('root')
 );
 
-//serviceWorkerRegistration.unregister();
-
-// ReactDOM.render(
-//   <React.StrictMode>
-//     <App />
-//   </React.StrictMode>,
-//   document.getElementById('root')
-// );
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals();

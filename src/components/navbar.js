@@ -15,7 +15,8 @@ export class Navbar extends React.Component {
             <BottomNavigation style={{
                 width: "100%",
                 justifyContent: "space-evenly",
-                background: "rgba(0, 0, 0, .44)"
+                background: "rgba(0, 0, 0, .44)",
+                marginBottom: "var(--nav-margin)"
             }}>
                 <BottomNavigationAction style={{paddingTop: "8px"}} component={Link} to="/" icon={<Icon path={mdiHome} size={1.5} color='var(--primary)'/>} />
                 <BottomNavigationAction style={{paddingTop: "8px"}} component={Link} to="/about" icon={<Icon path={mdiAccount} size={1.5} color='var(--primary)'/>} />

@@ -12,42 +12,28 @@
 * {
     box-sizing: inherit;
     margin: 0;
-    padding: 0
+    padding: 0;
 }
 
 body {
     background: var(--dark-bg);
     background: var(--body-bg);
     width: 100%;
-    height: -webkit-fill-available;
     background: #141414
 }
 
 #root {
-    min-height: 100vh;
-    max-height: 100vh;
+    height: 100vh;  
+    max-height: -webkit-fill-available;
     -webkit-flex-direction: column;
     flex-direction: column;
     display: -webkit-flex;
     display: flex
 }
 
-nav {
-    width: 100%;
-    max-height: 3em;
-    background: rgba(0, 0, 0, .44);
-    -webkit-justify-content: space-evenly;
-    justify-content: space-evenly;
-    -webkit-align-items: center;
-    align-items: center;
-    padding: 10px 0;
-    display: -webkit-flex;
-    display: flex
-}
-
 .fitness-app {
-    min-width: 100%;
-    min-height: 100vh;
+    height: 100vh;  
+    max-height: -webkit-fill-available;
     -webkit-flex-direction: column;
     flex-direction: column;
     -webkit-align-items: center;
@@ -55,17 +41,6 @@ nav {
     display: -webkit-flex;
     display: flex;
     overflow-y: auto
-}
-
-@supports (-webkit-touch-callout: none) {
-    .fitness-app,
-    .App {
-        min-height: -webkit-fill-available;
-        max-height: -webkit-fill-available
-    }
-    nav {
-        padding: 10px 0 30px 0;
-    }
 }
 
 .fitness-app-container, .container {
@@ -111,7 +86,7 @@ nav {
     min-height: 172px;
     color: var(--g-text-color-dark);
     box-shadow: var(--box-shadow-inset);
-    background: #141414;
+    background: #1414148c;
     border-radius: 100%;
     -webkit-flex-direction: column;
     flex-direction: column;

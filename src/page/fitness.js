@@ -6,12 +6,10 @@ import { supabase } from '../components/supabaseClient'
 import { Navbar } from '../components/navbar'
 import { CircularProgressWithLabel } from '../components/atom/CircularProgressWithLabel'
 
-
 import {
 	mdiSleep,
 	mdiWalk,
 	mdiVolumeSource,
-	mdiBrain
 } from '@mdi/js'
 
 export class Fitness extends React.Component {
@@ -20,22 +18,38 @@ export class Fitness extends React.Component {
 		this.state = {
 			data: {},
 			user: {},
-			selected: null,
+			selected: parseInt(this.props.id),
 			loaded: false,
 		};
-		//this.getData();
 		this.getData.bind(this)
     }
 	componentDidMount() {
 		this.getData()
 	}
+	getIcon(score) {
+		if(score < 20)
+			return "/assets/img/1.png"
+		else
+			if(score < 40)
+				return "/assets/img/2.png"
+			else
+				if(score < 60)
+					return "/assets/img/3.png"
+				else
+					if(score < 80)
+						return "/assets/img/4.png"
+					else
+						return "/assets/img/5.png"
+	}
     async getData() {
+		// eslint-disable-next-line no-unused-vars
 		let { data: today, error: error_today } = await supabase
 			.from('health_data')
 			.select('*')
 			.eq('id', supabase.auth.user().id)
 			.eq('date', ((new Date()).toISOString()).toLocaleString('zh-TW'))
 		if(today.length === 0) {
+			// eslint-disable-next-line no-unused-vars
 			const { data, error } = await supabase
   				.from('health_data')
   				.insert([
@@ -63,7 +77,6 @@ export class Fitness extends React.Component {
 			this.setState({
 				user: users,
 				data: health_data,
-				selected: 0,
 				loaded: true,
 			}) 
 		//}, 5000)
@@ -78,7 +91,8 @@ export class Fitness extends React.Component {
 			{
 				(this.state.loaded && this.state.data.length > 0) ? (
 					<>
-						<GlobalData icon={mdiBrain} title={this.state.data[this.state.selected].globalscore} goal={100}/>
+						<GlobalData icon={this.getIcon(this.state.data[this.state.selected].globalscore)} 
+						title={this.state.data[this.state.selected].globalscore} goal={100}/>
 						<TimeNavigator date={this.state.data[this.state.selected].date} before={this.state.selected < this.state.data.length-1} after={this.state.selected > 0} changeState={this.setStateSelected}/>
 						<div className="fitness-app-container">
 							<DisplayData 
@@ -109,9 +123,8 @@ export class Fitness extends React.Component {
 						</div>
 					</>
 				) : (
-				// <div className="fitness-app-container">En cours de chargement</div>
 				<>
-				<GlobalData icon={mdiBrain} title={""} goal={100}/>
+				<GlobalData icon={"/assets/img/1.png"} title={""} goal={100}/>
 				<TimeNavigator date={null} before={false} after={false} changeState={this.setStateSelected}/>
 				<div className="fitness-app-container">
 					<DisplayData 

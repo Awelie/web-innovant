@@ -1,15 +1,19 @@
-import './App.min.css';
 import { Fitness } from './page/fitness'
 import { About } from './page/about'
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useParams } from "react-router-dom";
 import { RequireAuth } from './components/RequireAuth'
 import { Login } from './page/login'
 import { Logout } from './page/logout'
 import { Signup } from './page/signup'
+import { Index } from './page/index'
+
 import React from "react";
+
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
+
+import './App.min.css';
 
 function App() {
   const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)');
@@ -23,12 +27,13 @@ function App() {
       }),
     [prefersDarkMode],
   );
-
+  
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
       <Routes>
-        <Route path="/" element={<RequireAuth><Fitness /></RequireAuth>} />
+        <Route path="/" element={<RequireAuth><Index /></RequireAuth>} />
+        <Route path="/detail/:id" element={<Details />}/>
         <Route path="about" element={<RequireAuth><About /></RequireAuth>} />
         <Route path="login" element={<Login />} />
         <Route path="logout" element={<Logout />} />
@@ -36,6 +41,13 @@ function App() {
       </Routes>
     </ThemeProvider>
   );
+}
+
+function Details() {
+  let { id } = useParams();
+  return (
+    <RequireAuth><Fitness id={id} /></RequireAuth>
+  )
 }
 
 export default App;

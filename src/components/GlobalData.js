@@ -1,12 +1,11 @@
 import React from 'react'
-import Icon from '@mdi/react'
 
 export class GlobalData extends React.Component {
     render() {
         const { icon, title, goal } = this.props
         return (
             <div className="globalData">
-                <Icon path={icon} size={2} color='var(--primary)' />
+                <img height="80px" src={icon} alt="global"/>
                 <div className="infos">
                     <div className="text">
                         <div className="title">{title}/{goal}</div>
