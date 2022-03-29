@@ -17,7 +17,6 @@ class SignupView extends React.Component {
         this.state = {setAuth: props.state, username: '', password: ''};
     
         this.handleSubmit = this.handleSubmit.bind(this);
-        this.checkLogin = this.checkLogin.bind(this);
         this.signup = this.signup.bind(this);
     }
     async signup() {
@@ -36,7 +35,7 @@ class SignupView extends React.Component {
     render() {
         return (
             <div className="container login">
-                <div><h2>Connexion</h2></div>
+                <div><h2>Inscription</h2></div>
                 <form style={{width: "80%", maxWidth: "400px"}} className="loginForm" onSubmit={this.handleSubmit}>
                     <TextField id="username" label="Nom de compte" value={this.state.username} onChange={(ev) => { this.setState({ username: ev.target.value }) }}/>
                     <TextField id="password" type="password" label="Mot de passe" value={this.state.password} onChange={(ev) => { this.setState({ password: ev.target.value }) }}/>
@@ -48,7 +47,7 @@ class SignupView extends React.Component {
                     marginTop: "10px",
                     marginBottom: "10px"
                 }}/>
-                <Link to="/signup">S'inscrire</Link>
+                <Link to="/login">Se connecter</Link>
             </div>
         )
     }
