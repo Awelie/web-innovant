@@ -1,7 +1,8 @@
 import { supabase } from '../components/supabaseClient'
 
 export async function LoadData() {
-    if(!sessionStorage.getItem('dbData')) {
+    let d = sessionStorage.getItem('dbData')
+    if(!d || ((new Date()) - d.time)/1000/60 > 30) {
         let data = await getData();
         sessionStorage.setItem('dbData', JSON.stringify(data))
     }
@@ -45,6 +46,7 @@ async function getData() {
     return {
         user: users,
         data: health_data,
+        time: new Date(),
         loaded: true,
     } 
 }

@@ -4,6 +4,7 @@ import { BrowserRouter } from "react-router-dom";
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { register } from './serviceWorkerRegistration'
 
 const getMobile = () => {
   const ua = navigator.userAgent
@@ -18,7 +19,7 @@ const getMobile = () => {
 
 console.log(getMobile())
   if(getMobile() === "iOS") {
-    document.documentElement.style.setProperty('--nav-margin', "25px");
+    document.documentElement.style.setProperty('--nav-margin', "0"); // "25px"
   } else {
     document.documentElement.style.setProperty('--nav-margin', "0");
   }
@@ -28,5 +29,5 @@ ReactDOM.render(
   </BrowserRouter>,
   document.getElementById('root')
 );
-
+register();
 reportWebVitals();

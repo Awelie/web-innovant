@@ -5,6 +5,7 @@ import { TimeNavigator } from '../components/TimeNavigator'
 import { Navbar } from '../components/navbar'
 import { CircularProgressWithLabel } from '../components/atom/CircularProgressWithLabel'
 import { LoadData } from '../components/LoadData'
+import { imgs } from '../components/imageFiles'
 
 import {
 	mdiSleep,
@@ -27,18 +28,18 @@ export class Fitness extends React.Component {
 	}
 	getIcon(score) {
 		if(score < 20)
-			return "/assets/img/1.png"
+			return imgs.img1
 		else
 			if(score < 40)
-				return "/assets/img/2.png"
+				return imgs.img2
 			else
 				if(score < 60)
-					return "/assets/img/3.png"
+					return imgs.img3
 				else
 					if(score < 80)
-						return "/assets/img/4.png"
+						return imgs.img4
 					else
-						return "/assets/img/5.png"
+						return imgs.img5
 	}
     
 	setStateSelected = (val) => {
@@ -84,7 +85,7 @@ export class Fitness extends React.Component {
 					</>
 				) : (
 				<>
-				<GlobalData icon={"/assets/img/1.png"} title={""} goal={100}/>
+				<GlobalData icon={imgs.icon} title={""} goal={100}/>
 				<TimeNavigator date={null} before={false} after={false} changeState={this.setStateSelected}/>
 				<div className="fitness-app-container">
 					<DisplayData 

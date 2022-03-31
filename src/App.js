@@ -6,8 +6,9 @@ import { Login } from './page/login'
 import { Logout } from './page/logout'
 import { Signup } from './page/signup'
 import { Index } from './page/index'
+import { Offline } from './page/offline'
 
-import React from "react";
+import React, { useState } from "react";
 
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
@@ -17,7 +18,7 @@ import './App.min.css';
 
 function App() {
   const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)');
-
+  const [lineState, setLineState] = useState(navigator.online) 
   const theme = React.useMemo(
     () =>
       createTheme({
@@ -28,19 +29,29 @@ function App() {
     [prefersDarkMode],
   );
   
-  return (
-    <ThemeProvider theme={theme}>
-      <CssBaseline />
-      <Routes>
-        <Route path="/" element={<RequireAuth><Index /></RequireAuth>} />
-        <Route path="/detail/:id" element={<Details />}/>
-        <Route path="about" element={<RequireAuth><About /></RequireAuth>} />
-        <Route path="login" element={<Login />} />
-        <Route path="logout" element={<Logout />} />
-        <Route path="signup" element={<Signup />} />
-      </Routes>
-    </ThemeProvider>
-  );
+  window.addEventListener('offline', function(e) { setLineState(navigator.online) });
+  window.addEventListener('online', function(e) { setLineState(navigator.online) });
+
+  if(lineState) {
+    return (
+      <ThemeProvider theme={theme}>
+        <CssBaseline />
+        <Routes>
+          <Route path="/" element={<RequireAuth><Index /></RequireAuth>} />
+          <Route path="/detail/:id" element={<Details />}/>
+          <Route path="about" element={<RequireAuth><About /></RequireAuth>} />
+          <Route path="login" element={<Login />} />
+          <Route path="logout" element={<Logout />} />
+          <Route path="signup" element={<Signup />} />
+        </Routes>
+      </ThemeProvider>
+    );
+  } else {
+    return (
+      <Offline></Offline>
+    )
+  }
+  
 }
 
 function Details() {

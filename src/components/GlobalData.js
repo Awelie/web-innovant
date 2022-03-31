@@ -5,7 +5,7 @@ export class GlobalData extends React.Component {
         const { icon, title, goal } = this.props
         return (
             <div className="globalData">
-                <img height="80px" src={icon} alt="global"/>
+                <img height="80px" src={icon} alt="global" style={{backgroundColor: "white", borderRadius: "50%"}}/>
                 <div className="infos">
                     <div className="text">
                         <div className="title">{title}/{goal}</div>

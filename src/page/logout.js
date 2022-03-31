@@ -24,6 +24,7 @@ class LogoutView extends React.Component {
     }
     async out() {
         const { error } = await supabase.auth.signOut()
+        sessionStorage.clear()
         this.state.setAuth(error)
     }
     render() {

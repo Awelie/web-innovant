@@ -4,6 +4,7 @@ import { DisplayData } from '../components/DisplayData'
 import { Navbar } from '../components/navbar'
 import { CircularProgressWithLabel } from '../components/atom/CircularProgressWithLabel'
 import { Navigate } from "react-router-dom";
+import { imgs } from '../components/imageFiles'
 
 export function Index() {
     let [selected, setSelected] = useState(null)
@@ -29,18 +30,18 @@ export class IndexView extends React.Component {
 	}
 	getIcon(score) {
 		if(score < 20)
-			return "/assets/img/1.png"
+			return imgs.img1
 		else
 			if(score < 40)
-				return "/assets/img/2.png"
+				return imgs.img2
 			else
 				if(score < 60)
-					return "/assets/img/3.png"
+					return imgs.img3
 				else
 					if(score < 80)
-						return "/assets/img/4.png"
+						return imgs.img4
 					else
-						return "/assets/img/5.png"
+						return imgs.img5
 	}
     getDate(date) {
         let d = new Date(date)
@@ -52,7 +53,7 @@ export class IndexView extends React.Component {
 		<>
             <div className="fitness-app">
             <div className="fitness-app-container">
-                <img src="/assets/icon.png" alt="icon"/>
+                <img src={imgs.icon} alt="icon"/>
 			{
 				(this.state.loaded && this.state.data.length > 0) ? (
 					<>

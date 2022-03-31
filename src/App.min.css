@@ -1,3 +1,4 @@
+/* DARK */
 :root {
     --dark-bg-dark-shadow: #363636;
     --dark-bg-light-shadow: #525252;
@@ -6,7 +7,8 @@
     --body-bg: linear-gradient(180deg, #2a2d32 0%, #131313 99.17%);
     --dark-bg: #27282a;
     --box-shadow-inset: inset 11.41px 11.41px 15px #0a0a0a, inset -11.41px -11.41px 15px #1e1e1e;
-    --box-shadow: 11.41px 11.41px 15px #0a0a0a, -11.41px -11.41px 15px #1e1e1e
+    --box-shadow: 11.41px 11.41px 15px #0a0a0a, -11.41px -11.41px 15px #1e1e1e;
+    --container-bg: #222222;
 }
 
 * {
@@ -71,7 +73,11 @@ body {
     display: flex;
     justify-content: center;
     flex-direction: column;
+    align-items: center;
     gap: 10px;
+}
+.loginForm > * {
+    width: 100%;
 }
 
 .timeNavigator {
@@ -90,8 +96,9 @@ body {
     min-width: 172px;
     min-height: 172px;
     color: var(--g-text-color-dark);
-    box-shadow: var(--box-shadow-inset);
+    /* box-shadow: var(--box-shadow-inset); */
     background: #1414148c;
+    background: var(--container-bg);
     border-radius: 100%;
     -webkit-flex-direction: column;
     flex-direction: column;
@@ -107,8 +114,9 @@ body {
 .displayData {
     width: 90%;
     color: var(--g-text-color-dark);
-    box-shadow: var(--box-shadow);
-    background: linear-gradient(145deg, #111, #171717);
+    /* box-shadow: var(--box-shadow); */
+    /* background: linear-gradient(145deg, #111, #222222); */
+    background: var(--container-bg);
     border-radius: 1em;
     -webkit-justify-content: space-between;
     justify-content: space-between;
