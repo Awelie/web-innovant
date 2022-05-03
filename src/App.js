@@ -18,7 +18,7 @@ import './App.min.css';
 
 function App() {
   const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)');
-  const [lineState, setLineState] = useState(navigator.online) 
+  const [lineState, setLineState] = useState(navigator.onLine) 
   const theme = React.useMemo(
     () =>
       createTheme({
@@ -29,8 +29,8 @@ function App() {
     [prefersDarkMode],
   );
   
-  window.addEventListener('offline', function(e) { setLineState(navigator.online) });
-  window.addEventListener('online', function(e) { setLineState(navigator.online) });
+  window.addEventListener('offline', function(e) { setLineState(navigator.onLine) });
+  window.addEventListener('online', function(e) { setLineState(navigator.onLine) });
 
   if(lineState) {
     return (

@@ -62,7 +62,7 @@ export class Fitness extends React.Component {
 								title={"Nombre de pas"} 
 								goal={"8000 pas"} 
 								value={this.state.data[this.state.selected].stepsnumber} 
-								component={<CircularProgressWithLabel value={this.state.data[this.state.selected].stepsnumber/8000*100 < 100 ? this.state.data[this.state.selected].stepsnumber/8000*100 : 100} />}
+								component={<CircularProgressWithLabel color={this.state.data[this.state.selected].stepsnumber/8000*100 > 80 ? "success" : this.state.data[this.state.selected].stepsnumber/8000*100 > 30 ? "primary" : "error" } value={this.state.data[this.state.selected].stepsnumber/8000*100 < 100 ? this.state.data[this.state.selected].stepsnumber/8000*100 : 100} />}
 								icon={mdiWalk}/>
 							<DisplayData 
 							loaded={this.state.loaded}
@@ -70,7 +70,7 @@ export class Fitness extends React.Component {
 								title={"Temps de sommeil"} 
 								goal={"480mins (8h)"} 
 								value={this.state.data[this.state.selected].sleeptime} 
-								component={<CircularProgressWithLabel value={this.state.data[this.state.selected].sleeptime/480*100 < 100 ? this.state.data[this.state.selected].sleeptime/480*100 : 100} />} 
+								component={<CircularProgressWithLabel color={this.state.data[this.state.selected].sleeptime/480*100 > 80 ? "success" : this.state.data[this.state.selected].sleeptime/480*100 > 30 ? "primary" : "error" } value={this.state.data[this.state.selected].sleeptime/480*100 < 100 ? this.state.data[this.state.selected].sleeptime/480*100 : 100} />} 
 								icon={mdiSleep}/>
 							<DisplayData 
 							loaded={this.state.loaded}
@@ -78,7 +78,6 @@ export class Fitness extends React.Component {
 								title={"Volume ambiant moyen"} 
 								goal={"Environnement calme : moyenne 82.5dB"} 
 								value={this.state.data[this.state.selected].ambiantvolume} 
-								
 								percentage={this.state.data[this.state.selected].ambiantvolume/82.5*100} 
 								icon={mdiVolumeSource}/>
 						</div>
