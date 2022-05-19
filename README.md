@@ -1,6 +1,6 @@
 # SooCat-CadreVie
 ## Qui sommes-nous ? 
-	Nous sommes quatre étudiants en master Sciences Cognitives de Nancy. 
+* Nous sommes quatre étudiants en master Sciences Cognitives de Nancy. 
   
 * Louis VOISIN
 * Paul DEBANO
