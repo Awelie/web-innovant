@@ -6,7 +6,7 @@ export async function LoadData() {
         let data = await getData();
         sessionStorage.setItem('dbData', JSON.stringify(data))
     }
-    console.log(JSON.parse(sessionStorage.getItem('dbData')))
+    //console.log(JSON.parse(sessionStorage.getItem('dbData')))
     return JSON.parse(sessionStorage.getItem('dbData'))
 }
 
@@ -48,5 +48,5 @@ async function getData() {
         data: health_data,
         time: new Date(),
         loaded: true,
-    } 
+    }
 }

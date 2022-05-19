@@ -46,7 +46,7 @@ class LoginView extends React.Component {
                 <form style={{width: "80%", maxWidth: "400px"}} className="loginForm" onSubmit={this.handleSubmit}>
                     <TextField id="username" label="Adresse mail" value={this.state.username} onChange={(ev) => { this.setState({ username: ev.target.value }) }}/>
                     <TextField id="password" type="password" label="Mot de passe" value={this.state.password} onChange={(ev) => { this.setState({ password: ev.target.value }) }}/>
-                    {(this.state.loaded) ? (<TextField type="submit" />) : (<CircularProgress />) }
+                    {(this.state.loaded) ? (<TextField type="submit" />) : (<CircularProgress className="loadForm"/>) }
                 </form>
                 <hr style={{
                     width: "70%",
