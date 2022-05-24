@@ -16,7 +16,7 @@ export class About extends React.Component {
                 }}
                 >
                     <Resume background={""} profilpic={imgs.icon} name={supabase.auth.user().email} title={supabase.auth.user().phone}/>
-			        <NavLink to="/logout" className={"logout"}>Deconnection</NavLink>
+			        <NavLink to="/logout" className={"logout"}>Déconnexion</NavLink>
                 </div>
                 <Navbar />
             </>
@@ -27,26 +27,36 @@ export class About extends React.Component {
 function Resume({ background, profilpic, name, title }) {
     const [data, setData] = useState("");
     useEffect(() => {
-        LoadData().then(data => setData(data))
+      let d;  
+      LoadData().then(data => {
+        d = data
+        let c = {
+          total: d.data.length,
+          good: d.data.filter(el => el.globalscore >= 70).length,
+          mean: d.data.filter(el => el.globalscore < 70 && el.globalscore >= 30).length,
+          bad: d.data.filter(el => el.globalscore < 30).length
+        }
+        setData(c)
+      })
     }, [])
     return (
       <div className={"resume"}>
         <img className={"resume-profil"} src={profilpic} alt="profile" />
         <div className={"resume-name"}>{name}</div>
-        <div className={"resume-title"}>{title}</div>
+        <div className={"resume-title"}>{data.total} jours</div>
         <div className={"wrapper"}>
           <div className={"info"}>
-            <div className={"info-value"}>{""}</div>
-            <div className={"info-title"}>jours</div>
-          </div>{/* 
-          <div className={"info"}>
-            <div className={"info-value"}>456</div>
-            <div className={"info-title"}>followers</div>
+            <div className={"info-value"}>{data.good}</div>
+            <div className={"info-title"}>jours sympas</div>
           </div>
           <div className={"info"}>
-            <div className={"info-value"}>789</div>
-            <div className={"info-title"}>following</div>
-          </div> */}
+            <div className={"info-value"}>{data.mean}</div>
+            <div className={"info-title"}>jours normaux</div>
+          </div>
+          <div className={"info"}>
+            <div className={"info-value"}>{data.bad}</div>
+            <div className={"info-title"}>jours mauvais</div>
+          </div>
         </div>
       </div>
     );

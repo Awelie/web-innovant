@@ -5,10 +5,10 @@
     --primary: #d4e2ef;
     --size: 90%;
     --border: rgba(0,0,0, 0.6);
-    --green100: #73a9cb;
-    --green200: #4695bb;
-    --green300: #307099;
-    --green400: #066492;
+    --blue100: #73a9cb;
+    --blue200: #4695bb;
+    --blue300: #307099;
+    --blue400: #066492;
 }
 
 * {
@@ -132,7 +132,7 @@ nav > * {
   }
   
   nav > .active {
-    --primary: rgb(113, 103, 168);
+    --primary: #BB70DB;
   }
 
 .displayData {
@@ -192,13 +192,15 @@ nav > * {
 }
 
 .about > *.logout {
-    color: rgb(164, 46, 46);
+    font-weight: 400;
+    font-size: 20px;
+    color: rgba(218, 5, 5, 0.68);
     justify-self: end;
 }
 
 .resume {
     width: var(--size);
-    height: var(--size);
+    /* height: var(--size); */
     max-height: fit-content;
     background: var(--border);
     padding: 1em;
@@ -223,11 +225,11 @@ nav > * {
   }
   
   .resume-name {
-    color: var(--green400);
+    color: var(--blue100);
     font-size: clamp(20px, 6vw, 24px);
   }
   .resume-title {
-    color: var(--green300);
+    color: var(--blue200);
     font-size: clamp(14px, 4vw, 18px);
   }
   
@@ -237,6 +239,7 @@ nav > * {
     display: flex;
     align-items: center;
     justify-content: space-evenly;
+    text-align: center;
   }
   
   .resume .wrapper .info {
@@ -248,10 +251,10 @@ nav > * {
   }
   
   .resume .wrapper .info .info-value {
-    color: var(--green200);
+    color: var(--blue100);
   }
   .resume .wrapper .info .info-title {
-    color: var(--green100);
+    color: var(--blue200);
   }
 
 @keyframes loading {
